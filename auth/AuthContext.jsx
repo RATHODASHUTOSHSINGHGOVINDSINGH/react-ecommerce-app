@@ -1,16 +1,15 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { auth } from '../src/Firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { getFirestore } from 'firebase/firestore';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { auth } from "../src/Firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "../src/Firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 const AuthContext = createContext();
-const db = getFirestore();
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
@@ -19,11 +18,11 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
- 
+
   // useEffect(() => {
   //   const savedUser = localStorage.getItem('user');
   //   const savedLoginStatus = localStorage.getItem('isLoggedIn');
-    
+
   //   if (savedUser && savedLoginStatus === 'true') {
   //     setUser(JSON.parse(savedUser));
   //     setIsLoggedIn(true);
@@ -37,13 +36,13 @@ export const AuthProvider = ({ children }) => {
         // User is signed in
         try {
           // Get user data from Firestore
-          const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid));
-          
+          const userDoc = await getDoc(doc(db, "users", firebaseUser.uid));
+
           if (userDoc.exists()) {
             const userData = userDoc.data();
             setUser({
               id: firebaseUser.uid,
-              name: userData.name || firebaseUser.displayName || 'User',
+              name: userData.name || firebaseUser.displayName || "User",
               email: userData.email || firebaseUser.email,
             });
             setIsLoggedIn(true);
@@ -51,16 +50,16 @@ export const AuthProvider = ({ children }) => {
             // Create user in Firestore if they don't exist
             const newUser = {
               uid: firebaseUser.uid,
-              name: firebaseUser.displayName || 'User',
+              name: firebaseUser.displayName || "User",
               email: firebaseUser.email,
-              createdAt: new Date().toISOString()
+              createdAt: new Date().toISOString(),
             };
-            
-            await setDoc(doc(db, 'users', firebaseUser.uid), newUser);
-            
+
+            await setDoc(doc(db, "users", firebaseUser.uid), newUser);
+
             setUser({
               id: firebaseUser.uid,
-              name: firebaseUser.displayName || 'User',
+              name: firebaseUser.displayName || "User",
               email: firebaseUser.email,
             });
             setIsLoggedIn(true);
@@ -76,14 +75,13 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     });
 
-  
     return () => unsubscribe();
   }, []);
 
   // const login = (userData) => {
   //   setIsLoggedIn(true);
   //   setUser(userData);
-     
+
   //   localStorage.setItem('user', JSON.stringify(userData));
   //   localStorage.setItem('isLoggedIn', 'true');
   // };
@@ -91,15 +89,19 @@ export const AuthProvider = ({ children }) => {
   const login = async (userData) => {
     setIsLoggedIn(true);
     setUser(userData);
-    
+
     // Store user data in Firestore
     try {
-      await setDoc(doc(db, 'users', userData.id), {
-        uid: userData.id,
-        name: userData.name,
-        email: userData.email,
-        lastLogin: new Date().toISOString()
-      }, { merge: true }); // merge: true updates fields without overwriting the entire document
+      await setDoc(
+        doc(db, "users", userData.id),
+        {
+          uid: userData.id,
+          name: userData.name,
+          email: userData.email,
+          lastLogin: new Date().toISOString(),
+        },
+        { merge: true }
+      ); // merge: true updates fields without overwriting the entire document
     } catch (error) {
       console.error("Error saving user data:", error);
     }
@@ -127,16 +129,12 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     logout,
-    loading
+    loading,
   };
 
   if (loading) {
-    return <div>Loading...</div>;  
+    return <div>Loading...</div>;
   }
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

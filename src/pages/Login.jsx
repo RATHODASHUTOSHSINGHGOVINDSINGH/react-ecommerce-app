@@ -29,7 +29,7 @@ const Login = () => {
 
   const onSubmit = async (data, e) => {
     e.preventDefault();
-    console.log("Form data:", data); // See what's being submitted
+    // console.log("Form data:", data);  
     
     try {
       // Use the imported auth instead of creating a new one
@@ -153,6 +153,7 @@ const Login = () => {
               <input
                 id={emailId}
                 type="email"
+                autoComplete="email"  
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -176,6 +177,7 @@ const Login = () => {
               <input
                 id={passwordId}
                 type="password"
+                autoComplete="current-password"  
                 {...register("password", {
                   required: "Password is required",
                   minLength: {
