@@ -52,8 +52,7 @@ const Login = () => {
 
       login(userData);
       setError("");
-      reset(); // Reset form data
-      // Remove navigate from here - let useEffect handle it
+      reset(); 
     } catch (error) {
       setError(error.message);
        toast.error( error.message||"Login failed. Please check your credentials.", {
@@ -177,7 +176,7 @@ const Login = () => {
               <input
                 id={passwordId}
                 type="password"
-                autoComplete="current-password"  
+                autoComplete="password"  
                 {...register("password", {
                   required: "Password is required",
                   minLength: {

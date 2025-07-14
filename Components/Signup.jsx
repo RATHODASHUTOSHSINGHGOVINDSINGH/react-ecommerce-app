@@ -150,6 +150,7 @@ const Signup = () => {
               <input
                 id={emailId}
                 type="email"
+                autoComplete="email"
                 {...register('email', {
                   required: 'Email is required',
                   pattern: {
@@ -171,6 +172,7 @@ const Signup = () => {
               <input
                 id={passwordId}
                 type="password"
+                autoComplete="password"  
                 {...register('password', {
                   required: 'Password is required',
                   minLength: {
