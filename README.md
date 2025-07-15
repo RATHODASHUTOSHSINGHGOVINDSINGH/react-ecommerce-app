@@ -1,4 +1,5 @@
 🚀 **Deployed My E-commerce App — Firebase Auth + Cart Logic + React Hooks!**
+
 ## **Tech Stack:** React + Vite, React Router, Firebase Auth,Firestore, Tailwind CSS**
 
 **Code:** https://github.com/RATHODASHUTOSHSINGHGOVINDSINGH/react-ecommerce-app
