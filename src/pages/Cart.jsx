@@ -110,7 +110,7 @@ const Cart = () => {
                       {cartItems.map((item) => (
                         <div
                           key={item.id}
-                          className="flex items-center p-6 border-b border-gray-200 last:border-b-0"
+                          className="flex items-center p-6  flex-wrap lg:flex-nowrap border-b last:border-b-0"
                         >
                            
                           <div className="w-20 h-20 flex-shrink-0 mr-4">
