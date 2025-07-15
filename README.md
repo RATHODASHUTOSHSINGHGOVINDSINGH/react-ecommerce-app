@@ -4,7 +4,7 @@
 
 **Code:** https://github.com/RATHODASHUTOSHSINGHGOVINDSINGH/react-ecommerce-app
 
- **Live:**https://react-ecommerce-app-ashutosh-rathod-projects.vercel.app/
+ **Live:** https://react-ecommerce-app-ashutosh-rathod-projects.vercel.app/
 
 💡 **Real-world problem and Solution:**
 Problem: Users lose their shopping cart after logging in, which stops them from completing their purchase.
