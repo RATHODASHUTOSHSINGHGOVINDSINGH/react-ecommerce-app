@@ -13,20 +13,30 @@ Solution: This app uses Firebase Auth and Firestore to keep each user’s cart s
 ✅ **My solution:**
 
 🔐 Firebase Auth for secure login & signup
+
 🛍️ Each user gets a private shopping cart — saved in Firestore
+
 📦 Cart is automatically restored after login, even on a new device
+
 🔐 Only the logged-in user can view or update their own cart
+
 🎨 Clean UI styled with Tailwind CSS
+
 🌐 Deployed instantly with Vercel
 
 ---
 
 ✨ Key Features:
 ✅ Firebase Auth (Email/password sign-up and login)
+
 ✅ Firestore Integration — each user has their own private cart
+
 ✅ Cart Persistence — saved and restored automatically after login
+
 ✅ Protected Routes using React Router (only logged-in users can access cart)
+
 ✅ Responsive UI with Tailwind CSS
+
 ✅ Deployed on Vercel for smooth, fast performance
 
 ---
@@ -34,11 +44,17 @@ Solution: This app uses Firebase Auth and Firestore to keep each user’s cart s
 📚 **What I learned while building this:**
 
 🔐 Authentication & Authorization with Firebase Auth
+
 📦 Real-time data handling using Firestore
+
 🧠 Solving real-world UX issues like cart loss after login
+
 🔄 React hooks: useState, useEffect, useContext for global auth state
+
 🚦 Route protection using React Router, useNavigate, useLocation
+
 💻 Component-driven, clean, and DRY architecture with reusable logic
+
 ⚡ Deployed with Vercel for fast frontend performance
 
 ---
