@@ -7,7 +7,9 @@
  **Live:** https://react-ecommerce-app-ashutosh-rathod-projects.vercel.app/
 
 💡 **Real-world problem and Solution:**
+
 Problem: Users lose their shopping cart after logging in, which stops them from completing their purchase.
+
 Solution: This app uses Firebase Auth and Firestore to keep each user’s cart saved and secure after login.
 
 ✅ **My solution:**
@@ -27,6 +29,7 @@ Solution: This app uses Firebase Auth and Firestore to keep each user’s cart s
 ---
 
 ✨ Key Features:
+
 ✅ Firebase Auth (Email/password sign-up and login)
 
 ✅ Firestore Integration — each user has their own private cart
